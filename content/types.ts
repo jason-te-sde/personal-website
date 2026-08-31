@@ -12,7 +12,8 @@ export interface Profile {
   email: string;
   github: string;
   linkedin: string;
-  resumePath: string;
+  /** null until a phone-free PDF exists — see README. CTAs degrade to email. */
+  resumePath: string | null;
   headshot: { src: string; alt: string; width: number; height: number };
 }
 

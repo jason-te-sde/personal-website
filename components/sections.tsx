@@ -130,12 +130,14 @@ export function Contact() {
           >
             {profile.email}
           </a>
-          <a
-            href={profile.resumePath}
-            className="rounded-xl border border-white/10 bg-white/[.03] px-5 py-3 text-sm font-medium text-zinc-200 transition hover:border-accent/40"
-          >
-            Resume ↓
-          </a>
+          {profile.resumePath && (
+            <a
+              href={profile.resumePath}
+              className="rounded-xl border border-white/10 bg-white/[.03] px-5 py-3 text-sm font-medium text-zinc-200 transition hover:border-accent/40"
+            >
+              Resume ↓
+            </a>
+          )}
         </div>
       </div>
     </section>

@@ -13,7 +13,9 @@ export const profile: Profile = {
   email: "jason.te.sde@gmail.com",
   github: "https://github.com/jason-te-sde",
   linkedin: "https://linkedin.com/in/jason-te-sde",
-  resumePath: "/resume",
+  // The master PDF still carries a phone number in its text layer, so nothing
+  // is published yet. Drop a scrubbed PDF in public/ and set this to "/resume".
+  resumePath: null,
   headshot: { src: "/headshot.jpg", alt: "Jason Te", width: 240, height: 290 },
 };
 

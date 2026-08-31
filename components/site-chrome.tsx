@@ -29,10 +29,10 @@ export function SiteHeader() {
             </a>
           ))}
           <a
-            href={profile.resumePath}
+            href={profile.resumePath ?? `mailto:${profile.email}`}
             className="ml-2 rounded-lg border border-white/10 bg-white/[.04] px-3 py-1.5 font-medium text-zinc-200 transition hover:border-accent/40 hover:bg-accent/10"
           >
-            Resume ↓
+            {profile.resumePath ? "Resume ↓" : "Email"}
           </a>
         </nav>
       </div>

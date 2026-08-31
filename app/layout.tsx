@@ -50,7 +50,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-ink font-sans text-zinc-300">
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <Backdrop />

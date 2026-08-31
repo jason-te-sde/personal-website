@@ -47,10 +47,10 @@ export function Hero() {
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <a
-            href={profile.resumePath}
+            href={profile.resumePath ?? `mailto:${profile.email}`}
             className="grad-btn group relative overflow-hidden rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-brand-700/30"
           >
-            <span className="relative z-10">Resume ↓</span>
+            <span className="relative z-10">{profile.resumePath ? "Resume ↓" : "Email me"}</span>
             <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-full" />
           </a>
           <ExternalLink
