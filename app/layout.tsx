@@ -32,7 +32,7 @@ const personJsonLd = {
   name: profile.name,
   url: SITE.url,
   image: `${SITE.url}${profile.headshot.src}`,
-  jobTitle: "Backend & Distributed Systems Engineer",
+  jobTitle: "AI Full-Stack Engineer",
   email: `mailto:${profile.email}`,
   address: { "@type": "PostalAddress", addressLocality: "Seattle", addressRegion: "WA", addressCountry: "US" },
   alumniOf: [
@@ -40,7 +40,16 @@ const personJsonLd = {
     { "@type": "CollegeOrUniversity", name: "Xiamen University" },
     { "@type": "CollegeOrUniversity", name: "Xi'an University of Posts and Telecommunications" },
   ],
-  knowsAbout: ["Distributed Systems", "Raft consensus", "Java", "Kubernetes", "Observability", "LLM agents"],
+  knowsAbout: [
+    "LLM applications",
+    "Retrieval-augmented generation",
+    "Distributed Systems",
+    "Raft consensus",
+    "Cloud infrastructure",
+    "Java",
+    "Kubernetes",
+    "Observability",
+  ],
   sameAs: [profile.github, profile.linkedin],
 };
 

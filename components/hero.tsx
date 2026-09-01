@@ -34,16 +34,14 @@ export function Hero() {
           {profile.availability}
         </div>
 
-        <h1 className="mt-5 text-[2.5rem] font-extrabold leading-[1.06] tracking-tight text-zinc-50 sm:text-5xl">
+        <h1 className="mt-5 text-[2rem] font-extrabold leading-[1.08] tracking-tight text-zinc-50 sm:text-[2.6rem]">
           {profile.headlineTop}
           <br />
           <span className="grad-text">{profile.headlineAccent}</span>
         </h1>
 
         <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-zinc-400">{profile.intro}</p>
-        <p className="mt-3.5 max-w-xl border-l-2 border-accent/40 pl-3.5 text-[15px] leading-relaxed text-zinc-300">
-          {profile.pullQuote}
-        </p>
+        <p className="mt-4 font-mono text-[12px] text-zinc-500">{profile.credential}</p>
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <a

@@ -15,6 +15,7 @@ export interface Profile {
   /** null until a phone-free PDF exists — see README. CTAs degrade to email. */
   resumePath: string | null;
   headshot: { src: string; alt: string; width: number; height: number };
+  credential: string;
 }
 
 /** A number on the site must carry the artifact that proves it. `source` is required. */

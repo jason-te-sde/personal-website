@@ -117,7 +117,7 @@ export function Contact() {
       <div className="glow overflow-hidden rounded-2xl border border-white/10 bg-white/[.02] p-8 text-center sm:p-12">
         <div className="grad-rule mx-auto mb-7 h-px w-24" />
         <h2 className="text-2xl font-bold tracking-tight text-zinc-50 sm:text-3xl">
-          Hiring for backend or infrastructure?
+          Hiring for AI, backend or infrastructure work?
         </h2>
         <p className="mx-auto mt-3 max-w-md text-[14.5px] leading-relaxed text-zinc-400">
           I graduate in May 2027 and I read every email. The fastest way to judge me is to clone keel and run the

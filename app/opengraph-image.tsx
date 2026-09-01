@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Jason Te — Backend & Distributed Systems Engineer";
+export const alt = "Jason Te — AI Full-Stack Engineer | Distributed Systems & Cloud";
 
 /**
  * next/og supports a small CSS subset: no Tailwind, and any element with more
@@ -39,8 +39,11 @@ export default function OgImage() {
           >
             Jason Te
           </div>
-          <div style={{ display: "flex", marginTop: 10, fontSize: 40, fontWeight: 600, color: "#d8b4fe" }}>
-            Backend &amp; distributed systems engineer
+          <div style={{ display: "flex", marginTop: 10, fontSize: 38, fontWeight: 600, color: "#d8b4fe" }}>
+            AI Full-Stack Engineer
+          </div>
+          <div style={{ display: "flex", marginTop: 4, fontSize: 30, fontWeight: 500, color: "#a78bfa" }}>
+            Distributed Systems &amp; Cloud
           </div>
         </div>
 

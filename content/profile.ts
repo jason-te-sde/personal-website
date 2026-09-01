@@ -2,11 +2,14 @@ import type { Profile } from "./types";
 
 export const profile: Profile = {
   name: "Jason Te",
-  headlineTop: "Backend and distributed",
-  headlineAccent: "systems engineer.",
-  availability: "Open to new-grad backend roles · May 2027",
+  headlineTop: "AI Full-Stack Engineer",
+  headlineAccent: "Distributed Systems & Cloud",
+  availability: "Open to new-grad roles · May 2027",
   intro:
-    "I write Java services that have to stay correct under concurrency, failure and retries. Lately also LLM agents, which turn out to need the same discipline.",
+    "I build AI-powered applications and the distributed systems underneath them. Recent work includes semantic search over clinical records using Claude and ChromaDB, a Raft key-value store with a deterministic fault-injection simulator, and a messaging platform sustaining 130K msg/s on AWS.",
+  // Unused. His own line, but it answers a question no recruiter asked, and
+  // volunteering it on the hero invites doubt about how keel was written.
+  // Render <p>{profile.pullQuote}</p> under the intro to put it back.
   pullQuote:
     "I lean on AI for analysis and scaffolding. Consistency guarantees I still work out by hand.",
   location: "Seattle, WA",
@@ -17,6 +20,7 @@ export const profile: Profile = {
   // is published yet. Drop a scrubbed PDF in public/ and set this to "/resume".
   resumePath: null,
   headshot: { src: "/headshot.jpg", alt: "Jason Te", width: 240, height: 290 },
+  credential: "MS Computer Science, Northeastern University · Graduating May 2027",
 };
 
 /** Shown above the fold. Each links to the run that produced it. */

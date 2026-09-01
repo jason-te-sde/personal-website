@@ -1,7 +1,7 @@
 export const SITE = {
   url: "https://jason-te.vercel.app",
-  title: "Jason Te — Backend & Distributed Systems Engineer",
+  title: "Jason Te — AI Full-Stack Engineer | Distributed Systems & Cloud",
   description:
-    "Backend and distributed systems engineer in Seattle. Java services, Raft from scratch, and LLM agents. MS Computer Science at Northeastern, graduating May 2027.",
-  ogAlt: "Jason Te — Backend & Distributed Systems Engineer",
+    "AI full-stack engineer in Seattle working on distributed systems and cloud infrastructure. LLM applications, Raft from scratch, and services on AWS. MS Computer Science at Northeastern, graduating May 2027.",
+  ogAlt: "Jason Te — AI Full-Stack Engineer | Distributed Systems & Cloud",
 } as const;
