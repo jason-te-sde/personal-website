@@ -28,6 +28,22 @@ export const projects: Project[] = [
     visual: { kind: "terminal" },
   },
   {
+    slug: "ehr-media-intelligence",
+    name: "EHR Media Intelligence",
+    status: "featured",
+    oneLiner: "Semantic search over messy clinical records.",
+    blurb:
+      "Semantic search and summarization over clinical records that arrive as PDFs, scan metadata and spreadsheets. The take-home that turned into my Onye offer.",
+    bullets: [
+      "Provider-agnostic backend — falls back from a hosted model to a local one, so a demo never dies on a rate limit.",
+      "Answers cite the source document, because an unsourced clinical summary is worse than none.",
+    ],
+    headlineStat: "p95 < 100ms",
+    logos: ["python", "fastapi", "docker", "claude"],
+    links: { github: "https://github.com/jason-te-sde/ehr-media-intelligence-platform" },
+    visual: { kind: "diagram", id: "ehr" },
+  },
+  {
     slug: "chatflow",
     name: "ChatFlow",
     status: "featured",
@@ -48,22 +64,6 @@ export const projects: Project[] = [
       objectPosition: "center 38%",
       light: true,
     },
-  },
-  {
-    slug: "ehr-media-intelligence",
-    name: "EHR Media Intelligence",
-    status: "featured",
-    oneLiner: "Semantic search over messy clinical records.",
-    blurb:
-      "Semantic search and summarization over clinical records that arrive as PDFs, scan metadata and spreadsheets. The take-home that turned into my Onye offer.",
-    bullets: [
-      "Provider-agnostic backend — falls back from a hosted model to a local one, so a demo never dies on a rate limit.",
-      "Answers cite the source document, because an unsourced clinical summary is worse than none.",
-    ],
-    headlineStat: "p95 < 100ms",
-    logos: ["python", "fastapi", "docker", "claude"],
-    links: { github: "https://github.com/jason-te-sde/ehr-media-intelligence-platform" },
-    visual: { kind: "diagram", id: "ehr" },
   },
   {
     slug: "pipeci",
