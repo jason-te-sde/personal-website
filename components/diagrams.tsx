@@ -1,5 +1,5 @@
 /**
- * Authored architecture diagrams. keel, EHR and PipeCI have no GUI to screenshot,
+ * Authored architecture diagrams. keel, EHR, PipeCI, cairn and nano-claude-code have no GUI to screenshot,
  * so these draw the real shape of each system instead of faking app shots.
  * Note every <path> sets fill="none" — the parent <g> carries a fill, and an
  * L-shaped path without it renders as a filled triangle.
@@ -148,8 +148,84 @@ export function MedTriageDiagram() {
   );
 }
 
+export function CairnDiagram() {
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="A command enters a pure step function that returns the next state and a list of effects; the state is logged and snapshotted, the effects are delivered exactly once to a consumer, and a seeded simulator checks twelve invariants after every step"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <rect x="4" y="30" width="62" height="30" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="35" y="43" textAnchor="middle" fill="#a1a1aa">publish</text>
+        <text x="35" y="54" textAnchor="middle" fill="#a1a1aa">command</text>
+        <path fill="none" d="M70 45 h20" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="94" y="22" width="104" height="46" rx="5" fill="rgba(168,85,247,.16)" stroke="#A855F7" />
+        <text x="146" y="38" textAnchor="middle" fill="#e4e4e7" fontWeight="700">step(state, cmd)</text>
+        <text x="146" y="50" textAnchor="middle" fill="#A855F7" fontSize="6.5">pure: no clock, no I/O</text>
+        <text x="146" y="60" textAnchor="middle" fill="#71717a" fontSize="7">→ state&apos;, effects</text>
+        <path fill="none" d="M202 36 h22" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="228" y="22" width="112" height="22" rx="4" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="284" y="36" textAnchor="middle" fill="#a1a1aa">log + snapshot</text>
+        <path fill="none" d="M202 56 h22" stroke="#A855F7" markerEnd="url(#arA)" />
+        <rect x="228" y="48" width="112" height="22" rx="4" fill="rgba(52,211,153,.08)" stroke="#34d399" />
+        <text x="284" y="62" textAnchor="middle" fill="#a7f3d0">effects, exactly once</text>
+        <path fill="none" d="M146 72 V96" stroke="#52525b" strokeDasharray="3 3" markerEnd="url(#ar)" />
+        <rect x="58" y="100" width="264" height="26" rx="5" fill="rgba(168,85,247,.08)" stroke="#8E2DE2" strokeDasharray="3 3" />
+        <text x="190" y="111" textAnchor="middle" fill="#e4e4e7">seeded simulator: replicas, disks, crashes</text>
+        <text x="190" y="121" textAnchor="middle" fill="#A855F7" fontSize="7">12 invariants checked after every step</text>
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
+export function NanoDiagram() {
+  const roles: [string, string, string][] = [
+    ["main", "Anthropic", "#A855F7"],
+    ["explore", "local Ollama", "#34d399"],
+    ["plan", "OpenAI-compatible", "#8E2DE2"],
+    ["verify", "Anthropic", "#A855F7"],
+  ];
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="The agent loop sends each role's requests to the model configured for that role, for example main to Anthropic, explore to a local Ollama model, plan to an OpenAI-compatible endpoint; file writes pass a permission check first"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <rect x="4" y="44" width="78" height="38" rx="5" fill="rgba(168,85,247,.16)" stroke="#A855F7" />
+        <text x="43" y="60" textAnchor="middle" fill="#e4e4e7" fontWeight="700">agent loop</text>
+        <text x="43" y="72" textAnchor="middle" fill="#A855F7" fontSize="7">ncc</text>
+        {roles.map(([role, model, color], i) => {
+          const y = 12 + i * 28;
+          return (
+            <g key={role}>
+              <path fill="none" d={`M86 63 C106 63 106 ${y + 10} 126 ${y + 10}`} stroke="#52525b" markerEnd="url(#ar)" />
+              <rect x="130" y={y} width="62" height="20" rx="4" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+              <text x="161" y={y + 13} textAnchor="middle" fill="#a1a1aa">{role}</text>
+              <path fill="none" d={`M196 ${y + 10} h22`} stroke="#52525b" markerEnd="url(#ar)" />
+              <rect x="222" y={y} width="104" height="20" rx="4" fill="rgba(255,255,255,.03)" stroke={color} />
+              <text x="274" y={y + 13} textAnchor="middle" fill="#e4e4e7">{model}</text>
+            </g>
+          );
+        })}
+        <text x="161" y="134" textAnchor="middle" fill="#52525b" fontSize="7">+ compact · title</text>
+        <rect x="4" y="112" width="78" height="22" rx="4" fill="rgba(251,191,36,.08)" stroke="#fbbf24" />
+        <text x="43" y="126" textAnchor="middle" fill="#fcd34d" fontSize="7.5">permission check</text>
+        <path fill="none" d="M43 86 V108" stroke="#52525b" strokeDasharray="3 3" markerEnd="url(#ar)" />
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
 export const DIAGRAMS = {
   ehr: EhrDiagram,
   pipeci: PipeCiDiagram,
   medtriage: MedTriageDiagram,
+  cairn: CairnDiagram,
+  nano: NanoDiagram,
 } as const;

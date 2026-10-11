@@ -5,13 +5,16 @@ import { LOGO_LABEL } from "@/content/stack";
  * <img> rather than next/image: they are remote, tiny, and next/image would need
  * every host allow-listed for no benefit at 13px.
  */
+/** Marks whose brand colour is black, which vanishes on this background; drawn in zinc-200 instead. */
+const DARK_MARKS = new Set(["nextdotjs", "anthropic", "ollama"]);
+
 export function LogoChip({ slug }: { slug: string }) {
   return (
     <span className="logo-chip flex items-center gap-1.5 rounded-lg border border-white/[.07] bg-white/[.02] px-2 py-1">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         className="logo"
-        src={`https://cdn.simpleicons.org/${slug}`}
+        src={`https://cdn.simpleicons.org/${slug}${DARK_MARKS.has(slug) ? "/e4e4e7" : ""}`}
         alt=""
         width={13}
         height={13}

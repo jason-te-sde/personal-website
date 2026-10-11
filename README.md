@@ -13,7 +13,7 @@ npm run lint
 
 | Route | What |
 | --- | --- |
-| `/` | The whole 30-second read: hero, live Raft cluster, six projects, experience, stack, education |
+| `/` | The whole 30-second read: hero, live Raft cluster, nine projects, experience, stack, education |
 | `/projects/keel` | The one deep case study |
 | `/resume` | 307 → the resume PDF (see *Adding the resume* below) |
 

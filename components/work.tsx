@@ -11,6 +11,7 @@ import { ExternalLink } from "./section";
 const IMG_SIZE: Record<string, { w: number; h: number }> = {
   "/projects/chatflow-arch.png": { w: 1322, h: 1010 },
   "/projects/snapcal.png": { w: 1280, h: 900 },
+  "/projects/till-storefront.jpg": { w: 1440, h: 900 },
 };
 
 function ProjectVisual({ visual }: { visual: Visual }) {

@@ -28,6 +28,28 @@ export const projects: Project[] = [
     visual: { kind: "terminal" },
   },
   {
+    slug: "till",
+    name: "till",
+    status: "featured",
+    oneLiner: "A game store that cannot oversell.",
+    blurb:
+      "A full-stack game store on AWS — React storefront, Spring Boot backend-for-frontend, Kafka, Redis and Aurora on ECS Fargate — in front of a reservation ledger whose rules are a pure function. The storefront can only move stock by asking the ledger, so a bug anywhere in the shop costs a refused checkout, never an oversold copy.",
+    bullets: [
+      "Took p99 at **8,000 concurrent shoppers** from 20.8 s to **134 ms** at 3,498 req/s, one measured bottleneck at a time, across eighteen recorded runs.",
+      "Deciding concurrent checkouts in one write lifted throughput from ~1,200 to **~4,100 checkouts/s**; a Redis cache cut catalogue reads from 398 ms to 34 ms.",
+      "A seeded concurrency simulator runs **30M invariant checks** with zero violations; 753 tests.",
+    ],
+    headlineStat: "p99 134 ms",
+    logos: ["openjdk", "spring", "react", "apachekafka", "redis", "terraform"],
+    links: { github: "https://github.com/jason-te-sde/till" },
+    visual: {
+      kind: "image",
+      src: "/projects/till-storefront.jpg",
+      alt: "The till storefront: a featured-game carousel over procedurally painted cover art and the first shelf of games on sale",
+      objectPosition: "center top",
+    },
+  },
+  {
     slug: "ehr-media-intelligence",
     name: "EHR Media Intelligence",
     status: "featured",
@@ -80,6 +102,37 @@ export const projects: Project[] = [
     logos: ["kubernetes", "helm", "grafana", "opentelemetry"],
     links: { github: "https://github.com/jason-te-sde/CI-CD-Pipeline-System" },
     visual: { kind: "diagram", id: "pipeci" },
+  },
+  {
+    slug: "cairn",
+    name: "cairn",
+    status: "secondary",
+    oneLiner: "A deterministic model registry.",
+    blurb:
+      "An AI model registry rebuilt from the defects of a real one: immutable versions, content-addressed artifacts and exactly-once side effects, with the rules as one pure function and a seeded simulator checking twelve invariants after every step.",
+    bullets: [
+      "Eight known defects are put back on purpose, and the check that catches each is **asserted, not documented**.",
+      "537 tests, 86.8% coverage, one runtime dependency; it found six real bugs in itself.",
+    ],
+    logos: ["openjdk", "apachemaven", "docker"],
+    links: { github: "https://github.com/jason-te-sde/cairn" },
+    visual: { kind: "diagram", id: "cairn" },
+  },
+  {
+    slug: "nano-claude-code",
+    name: "nano-claude-code",
+    status: "secondary",
+    oneLiner: "A terminal coding agent that brings its own models.",
+    blurb:
+      "An open-source terminal coding agent for the Anthropic API, any OpenAI-compatible endpoint, or a local Ollama server — with a different model per role, so exploring a codebase does not have to cost what writing the fix does.",
+    bullets: [
+      "Six roles — main, explore, plan, verify, compact, title — each pointed at **its own model**.",
+      "Every file write is checked by a permission engine before it happens; not yet released.",
+    ],
+    badge: "In progress",
+    logos: ["python", "anthropic", "ollama"],
+    links: { github: "https://github.com/jason-te-sde/nano-claude-code" },
+    visual: { kind: "diagram", id: "nano" },
   },
   {
     slug: "snapcal",

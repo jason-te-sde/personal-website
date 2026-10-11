@@ -6,7 +6,7 @@ export const profile: Profile = {
   headlineAccent: "Distributed Systems & Cloud",
   availability: "Open to new-grad roles · May 2027",
   intro:
-    "I build AI-powered applications and the distributed systems underneath them. Recent work includes semantic search over clinical records using Claude and ChromaDB, a Raft key-value store with a deterministic fault-injection simulator, and a messaging platform sustaining 130K msg/s on AWS.",
+    "I build AI-powered applications and the distributed systems underneath them. Recent work includes a game store serving 8,000 concurrent shoppers on AWS at a 134 ms p99, a Raft key-value store with a deterministic fault-injection simulator, and semantic search over clinical records using Claude and ChromaDB.",
   // Unused. His own line, but it answers a question no recruiter asked, and
   // volunteering it on the hero invites doubt about how keel was written.
   // Render <p>{profile.pullQuote}</p> under the intro to put it back.
@@ -33,11 +33,11 @@ export const stats = [
     source: "https://github.com/jason-te-sde/keel#numbers",
   },
   {
-    value: "12M",
-    count: 12,
-    suffix: "M",
-    label: "invariant checks, 0 violations",
-    source: "https://github.com/jason-te-sde/keel#numbers",
+    value: "134ms",
+    count: 134,
+    suffix: "ms",
+    label: "p99 at 8,000 shoppers on AWS",
+    source: "https://github.com/jason-te-sde/till/blob/main/docs/load-test.md#results",
   },
   {
     value: "130K",

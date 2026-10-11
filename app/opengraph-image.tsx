@@ -50,7 +50,7 @@ export default function OgImage() {
         <div style={{ display: "flex", gap: 20 }}>
           {[
             ["60×", "write throughput"],
-            ["12M", "invariant checks"],
+            ["134ms", "p99 on AWS"],
             ["130K", "msg/s on AWS"],
           ].map(([value, label]) => (
             <div
