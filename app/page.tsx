@@ -21,7 +21,7 @@ export default function Home() {
         <StackGrid />
       </Section>
 
-      <Section index="04" title="Education">
+      <Section id="education" index="04" title="Education">
         <EducationList />
       </Section>
 
