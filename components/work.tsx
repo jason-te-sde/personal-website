@@ -130,7 +130,7 @@ function FeaturedRow({ project, flip }: { project: Project; flip: boolean }) {
             <h3 className="text-xl font-bold text-zinc-50">{project.name}</h3>
             {project.headlineStat && (
               <span
-                className={`font-mono text-[11px] ${project.headlineStat === "team of 5" ? "text-zinc-500" : "text-accent"}`}
+                className={`shrink-0 whitespace-nowrap font-mono text-[11px] ${project.headlineStat === "team of 5" ? "text-zinc-500" : "text-accent"}`}
               >
                 {project.headlineStat}
               </span>

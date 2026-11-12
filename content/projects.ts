@@ -50,6 +50,23 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "distributed-job-queue",
+    name: "distributed-job-queue",
+    status: "featured",
+    oneLiner: "A job queue where a stalled worker cannot overwrite a newer one.",
+    blurb:
+      "Stateless gRPC brokers in Go over PostgreSQL, delivering each job at least once under a lease. Every lease carries a fencing token and the broker turns away any report that carries an older one, so a worker that stalls past its lease cannot overwrite the result of the job's newer owner. Runs on Kubernetes with a Helm chart, and KEDA scales workers from zero on the backlog.",
+    bullets: [
+      "**3,781 jobs/s** on one broker on a laptop; at half that rate a job starts **0.97 ms** after it is enqueued, at the median.",
+      "Under a **100K-job flood** from one tenant, weighted fair scheduling kept a small tenant's p99 wait at **18 ms**, against 28.5 s first-come-first-served.",
+      "A seeded simulator replays **500 seeds** per CI run, checking eight safety invariants after every event, and **nine planted flaws** must each turn the suite red.",
+    ],
+    headlineStat: "3,781 jobs/s",
+    logos: ["go", "postgresql", "kubernetes", "helm", "prometheus"],
+    links: { github: "https://github.com/jason-te-sde/distributed-job-queue" },
+    visual: { kind: "diagram", id: "jobqueue" },
+  },
+  {
     slug: "ehr-media-intelligence",
     name: "EHR Media Intelligence",
     status: "featured",

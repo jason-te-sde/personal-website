@@ -5,8 +5,8 @@ import { LOGO_LABEL } from "@/content/stack";
  * <img> rather than next/image: they are remote, tiny, and next/image would need
  * every host allow-listed for no benefit at 13px.
  */
-/** Marks whose brand colour is black, which vanishes on this background; drawn in zinc-200 instead. */
-const DARK_MARKS = new Set(["nextdotjs", "anthropic", "ollama"]);
+/** Marks whose brand colour is black or near it (Helm's navy), which vanishes on this background; drawn in zinc-200 instead. */
+const DARK_MARKS = new Set(["nextdotjs", "anthropic", "ollama", "helm"]);
 
 export function LogoChip({ slug }: { slug: string }) {
   return (
