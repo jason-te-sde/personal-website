@@ -6,7 +6,7 @@ import type { StackGroup } from "./types";
  * were never there. Named tools only, no concepts.
  */
 export const stack: StackGroup[] = [
-  { label: "Languages", logos: ["openjdk", "python", "typescript", "javascript"], text: ["SQL", "C/C++", "Bash"] },
+  { label: "Languages", logos: ["openjdk", "go", "python", "typescript", "javascript"], text: ["SQL", "C/C++", "Bash"] },
   { label: "Backend & APIs", logos: ["spring", "fastapi", "nodedotjs", "apachekafka", "rabbitmq"], text: ["gRPC", "WebSocket"] },
   { label: "Data", logos: ["postgresql", "mysql", "mongodb", "redis", "rocksdb"], text: ["ChromaDB"] },
   {
@@ -20,7 +20,7 @@ export const stack: StackGroup[] = [
 
 /** Simple Icons slug → display label. */
 export const LOGO_LABEL: Record<string, string> = {
-  openjdk: "Java", python: "Python", typescript: "TypeScript", javascript: "JavaScript",
+  openjdk: "Java", go: "Go", python: "Python", typescript: "TypeScript", javascript: "JavaScript",
   spring: "Spring Boot", fastapi: "FastAPI", nodedotjs: "Node.js", apachekafka: "Kafka", rabbitmq: "RabbitMQ",
   postgresql: "PostgreSQL", mysql: "MySQL", mongodb: "MongoDB", redis: "Redis", rocksdb: "RocksDB",
   docker: "Docker", kubernetes: "Kubernetes", helm: "Helm", nginx: "Nginx", githubactions: "GitHub Actions",

@@ -1,5 +1,5 @@
 /**
- * Authored architecture diagrams. keel, EHR, PipeCI, cairn and nano-claude-code have no GUI to screenshot,
+ * Authored architecture diagrams. keel, EHR, PipeCI, cairn, nano-claude-code and the job queue have no GUI to screenshot,
  * so these draw the real shape of each system instead of faking app shots.
  * Note every <path> sets fill="none" — the parent <g> carries a fill, and an
  * L-shaped path without it renders as a filled triangle.
@@ -222,10 +222,58 @@ export function NanoDiagram() {
   );
 }
 
+export function JobQueueDiagram() {
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="A producer enqueues jobs over gRPC to three stateless brokers that keep every job in PostgreSQL. Worker B, which leased the job under fencing token 2 after worker A's lease expired, completes it and is accepted; worker A, stalled past its lease under token 1, reports late and is refused"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <rect x="4" y="31" width="62" height="24" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="35" y="41" textAnchor="middle" fill="#a1a1aa">producer</text>
+        <text x="35" y="50" textAnchor="middle" fill="#52525b" fontSize="6.5">enqueue</text>
+        <path fill="none" d="M70 43 H96" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <text x="142" y="10" textAnchor="middle" fill="#52525b" fontSize="7">stateless brokers · gRPC</text>
+        {[16, 35, 54].map((y) => (
+          <g key={y}>
+            <rect x="100" y={y} width="84" height="15" rx="4" fill="rgba(168,85,247,.10)" stroke="#8E2DE2" />
+            <text x="142" y={y + 10.5} textAnchor="middle" fill="#e4e4e7">broker</text>
+          </g>
+        ))}
+
+        <path fill="none" d="M142 73 V90" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="92" y="94" width="100" height="34" rx="5" fill="rgba(168,85,247,.16)" stroke="#A855F7" />
+        <text x="142" y="108" textAnchor="middle" fill="#e4e4e7" fontWeight="700">PostgreSQL</text>
+        <text x="142" y="120" textAnchor="middle" fill="#A855F7" fontSize="7">source of truth</text>
+
+        <rect x="230" y="12" width="146" height="24" rx="5" fill="rgba(52,211,153,.08)" stroke="#34d399" />
+        <text x="303" y="22" textAnchor="middle" fill="#a7f3d0">worker B · token 2</text>
+        <text x="303" y="31" textAnchor="middle" fill="#71717a" fontSize="7">leased after A expired</text>
+        <path fill="none" d="M228 24 H188" stroke="#52525b" markerEnd="url(#ar)" />
+        <text x="208" y="33" textAnchor="middle" fill="#34d399" fontSize="6.5">accepted</text>
+
+        <rect x="230" y="50" width="146" height="24" rx="5" fill="rgba(251,191,36,.08)" stroke="#fbbf24" strokeDasharray="3 3" />
+        <text x="303" y="60" textAnchor="middle" fill="#fcd34d">worker A · token 1</text>
+        <text x="303" y="69" textAnchor="middle" fill="#71717a" fontSize="7">stalled past its lease</text>
+        <path fill="none" d="M228 62 H188" stroke="#52525b" strokeDasharray="3 3" markerEnd="url(#ar)" />
+        <text x="208" y="71" textAnchor="middle" fill="#f87171" fontSize="6.5">refused</text>
+
+        <text x="303" y="104" textAnchor="middle" fill="#A855F7" fontSize="7">fencing: only the newest lease</text>
+        <text x="303" y="114" textAnchor="middle" fill="#A855F7" fontSize="7">holder can change a job</text>
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
 export const DIAGRAMS = {
   ehr: EhrDiagram,
   pipeci: PipeCiDiagram,
   medtriage: MedTriageDiagram,
   cairn: CairnDiagram,
   nano: NanoDiagram,
+  jobqueue: JobQueueDiagram,
 } as const;
