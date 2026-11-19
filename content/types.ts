@@ -88,3 +88,25 @@ export interface EducationEntry {
   gpa?: string;
   current?: boolean;
 }
+
+/**
+ * One block of an article. Inline text may mark **bold**, `code` and [a link](https://…);
+ * components/prose.tsx renders those three and nothing else.
+ */
+export type Block =
+  | { kind: "p"; text: string }
+  | { kind: "h2"; text: string }
+  | { kind: "list"; items: string[] }
+  | { kind: "code"; text: string }
+  | { kind: "table"; head: string[]; rows: string[][] };
+
+export interface Article {
+  slug: string;
+  title: string;
+  summary: string;
+  /** ISO date, yyyy-mm-dd. */
+  date: string;
+  /** The project the article is about; every number in it links into that repository. */
+  project: { name: string; github: string };
+  blocks: Block[];
+}
