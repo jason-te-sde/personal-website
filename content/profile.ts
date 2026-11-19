@@ -6,7 +6,7 @@ export const profile: Profile = {
   headlineAccent: "Distributed Systems & Cloud",
   availability: "Open to new-grad roles · May 2027",
   intro:
-    "I build AI-powered applications and the distributed systems underneath them. Recent work includes a game store serving 8,000 concurrent shoppers on AWS at a 134 ms p99, a Raft key-value store with a deterministic fault-injection simulator, and semantic search over clinical records using Claude and ChromaDB.",
+    "I build distributed systems and the AI applications that run on them. Systems: a game store serving 8,000 concurrent shoppers on AWS at a 134 ms p99, and a Raft key-value store and an LSM storage engine, each crash-tested by a deterministic simulator. AI: a research agent whose citations are checked against what it retrieved, and anomaly detection measured under a protocol random scores cannot beat.",
   // Unused. His own line, but it answers a question no recruiter asked, and
   // volunteering it on the hero invites doubt about how keel was written.
   // Render <p>{profile.pullQuote}</p> under the intro to put it back.

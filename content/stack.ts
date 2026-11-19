@@ -29,4 +29,5 @@ export const LOGO_LABEL: Record<string, string> = {
   react: "React", nextdotjs: "Next.js", vite: "Vite", tailwindcss: "Tailwind",
   supabase: "Supabase", pytorch: "PyTorch",
   terraform: "Terraform", anthropic: "Anthropic", ollama: "Ollama",
+  cplusplus: "C++", cmake: "CMake", scikitlearn: "scikit-learn", mlflow: "MLflow",
 };

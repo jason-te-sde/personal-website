@@ -34,7 +34,10 @@ export type ProjectStatus = "flagship" | "featured" | "secondary";
 export type Visual =
   | { kind: "image"; src: string; alt: string; objectPosition?: string; light?: boolean }
   | { kind: "terminal" }
-  | { kind: "diagram"; id: "ehr" | "pipeci" | "medtriage" | "cairn" | "nano" | "jobqueue" };
+  | {
+      kind: "diagram";
+      id: "ehr" | "pipeci" | "medtriage" | "cairn" | "nano" | "jobqueue" | "shale" | "arxiv" | "tsguard";
+    };
 
 export interface Project {
   slug: string;
