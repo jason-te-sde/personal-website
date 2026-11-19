@@ -1,6 +1,7 @@
 import { Bento, Hero } from "@/components/hero";
 import { Work } from "@/components/work";
 import { Contact, EducationList, ExperienceList, StackGrid } from "@/components/sections";
+import { WritingList } from "@/components/writing-list";
 import { Section } from "@/components/section";
 
 export default function Home() {
@@ -23,6 +24,10 @@ export default function Home() {
 
       <Section id="education" index="04" title="Education">
         <EducationList />
+      </Section>
+
+      <Section id="writing" index="05" title="Writing">
+        <WritingList />
       </Section>
 
       <Contact />

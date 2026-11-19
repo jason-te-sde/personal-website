@@ -15,6 +15,7 @@ npm run lint
 | --- | --- |
 | `/` | The whole 30-second read: hero, live Raft cluster, ten projects, experience, stack, education |
 | `/projects/keel` | The one deep case study |
+| `/writing/<slug>` | Articles, listed on `/` under Writing |
 | `/resume` | 307 → the resume PDF (see *Adding the resume* below) |
 
 Everything is statically prerendered. There is no database, no API route and no contact form.
@@ -33,6 +34,8 @@ Two type-level guardrails worth keeping:
 - `Project.ownership` exists so team projects say what was and was not mine. PipeCI uses it, and its diagram dims the parts a teammate owned.
 
 Bullets mark their one or two key terms with `**double asterisks**`; `components/rich-text.tsx` renders that. It is not Markdown and deliberately supports nothing else.
+
+Articles are typed too: `content/writing/<slug>.ts` holds an `Article` whose body is a list of blocks (paragraph, `##` heading, list, code, table). Their inline text adds `` `code` `` and `[links](https://…)` to the bold, rendered by `components/prose.tsx`, and nothing else.
 
 ## Adding the resume
 

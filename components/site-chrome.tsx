@@ -18,6 +18,7 @@ export function SiteHeader() {
             ["#experience", "Experience", "hidden sm:flex"],
             ["#stack", "Stack", "hidden sm:flex"],
             ["#education", "Education", "hidden sm:flex"],
+            ["#writing", "Writing", "hidden sm:flex"],
           ].map(([href, label, cls]) => (
             <a
               key={href}
