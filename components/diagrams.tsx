@@ -1,5 +1,6 @@
 /**
- * Authored architecture diagrams. keel, EHR, PipeCI, cairn, nano-claude-code and the job queue have no GUI to screenshot,
+ * Authored architecture diagrams. keel, EHR, PipeCI, cairn, nano-claude-code, the job queue, shale, the arXiv agent and
+ * TimeSeriesGuard have no GUI to screenshot,
  * so these draw the real shape of each system instead of faking app shots.
  * Note every <path> sets fill="none" — the parent <g> carries a fill, and an
  * L-shaped path without it renders as a filled triangle.
@@ -269,6 +270,152 @@ export function JobQueueDiagram() {
   );
 }
 
+export function ShaleDiagram() {
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="A write goes to the write-ahead log and the memtable; the memtable is flushed to level 0 and compaction merges tables down to levels 1 and 2. All of it runs over a simulated filesystem that loses power at a seeded byte, and after every step the database is compared with a reference model"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <rect x="4" y="30" width="58" height="26" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="33" y="41" textAnchor="middle" fill="#a1a1aa">Put</text>
+        <text x="33" y="51" textAnchor="middle" fill="#52525b" fontSize="6.5">atomic batch</text>
+        <path fill="none" d="M66 43 H78 V18 H90" stroke="#52525b" markerEnd="url(#ar)" />
+        <path fill="none" d="M78 43 V46 H90" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="94" y="8" width="84" height="20" rx="4" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="136" y="21" textAnchor="middle" fill="#a1a1aa">write-ahead log</text>
+        <rect x="94" y="36" width="84" height="20" rx="4" fill="rgba(168,85,247,.12)" stroke="#8E2DE2" />
+        <text x="136" y="49" textAnchor="middle" fill="#e4e4e7">memtable</text>
+        <path fill="none" d="M136 60 V72" stroke="#52525b" markerEnd="url(#ar)" />
+        <text x="146" y="69" fill="#52525b" fontSize="6.5">flush</text>
+
+        {[
+          ["L0", 76, 2],
+          ["L1", 96, 4],
+          ["L2", 116, 6],
+        ].map(([level, y, n]) => (
+          <g key={level as string}>
+            <text x="86" y={(y as number) + 10} textAnchor="end" fill="#71717a" fontSize="7">{level}</text>
+            {Array.from({ length: n as number }, (_, i) => (
+              <rect
+                key={i}
+                x={94 + i * (84 / (n as number))}
+                y={y as number}
+                width={84 / (n as number) - 2}
+                height="14"
+                rx="2"
+                fill="rgba(168,85,247,.16)"
+                stroke="#A855F7"
+              />
+            ))}
+          </g>
+        ))}
+        <path fill="none" d="M182 83 C194 83 194 103 182 103" stroke="#52525b" markerEnd="url(#ar)" />
+        <path fill="none" d="M182 103 C194 103 194 123 182 123" stroke="#52525b" markerEnd="url(#ar)" />
+        <text x="198" y="106" fill="#52525b" fontSize="6.5">compaction</text>
+
+        <rect x="244" y="8" width="132" height="48" rx="5" fill="rgba(251,191,36,.06)" stroke="#fbbf24" strokeDasharray="3 3" />
+        <text x="310" y="22" textAnchor="middle" fill="#fcd34d">simulated filesystem</text>
+        <text x="310" y="34" textAnchor="middle" fill="#71717a" fontSize="7">power lost at a seeded byte,</text>
+        <text x="310" y="44" textAnchor="middle" fill="#71717a" fontSize="7">unsynced renames dropped</text>
+
+        <rect x="244" y="70" width="132" height="34" rx="5" fill="rgba(52,211,153,.08)" stroke="#34d399" />
+        <text x="310" y="84" textAnchor="middle" fill="#a7f3d0">after every step:</text>
+        <text x="310" y="96" textAnchor="middle" fill="#a7f3d0">db == reference model</text>
+
+        <text x="310" y="126" textAnchor="middle" fill="#A855F7" fontSize="7">+ 200 kill -9 rounds per CI run</text>
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
+export function ArxivDiagram() {
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="A question goes to a ReAct agent. Its search tool retrieves 20 candidates by embedding search and reranks them to 5 with a cross-encoder. The answer's citations are checked against the retrieved passages, and the answer streams to the client over Server-Sent Events"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <rect x="4" y="58" width="58" height="24" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="33" y="73" textAnchor="middle" fill="#a1a1aa">question</text>
+        <path fill="none" d="M66 70 H84" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="88" y="52" width="74" height="36" rx="5" fill="rgba(168,85,247,.14)" stroke="#A855F7" />
+        <text x="125" y="67" textAnchor="middle" fill="#e4e4e7" fontWeight="700">ReAct agent</text>
+        <text x="125" y="79" textAnchor="middle" fill="#A855F7" fontSize="7">4 tools</text>
+
+        <path fill="none" d="M166 62 C178 62 178 20 190 20" stroke="#52525b" markerEnd="url(#ar)" />
+        <text x="160" y="36" fill="#52525b" fontSize="6.5">search</text>
+        <rect x="194" y="10" width="100" height="20" rx="4" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="244" y="23" textAnchor="middle" fill="#a1a1aa">embedding · top 20</text>
+        <path fill="none" d="M244 34 V40" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="194" y="44" width="100" height="20" rx="4" fill="rgba(168,85,247,.10)" stroke="#8E2DE2" />
+        <text x="244" y="57" textAnchor="middle" fill="#e4e4e7">cross-encoder · top 5</text>
+        <text x="300" y="57" fill="#A855F7" fontSize="7">+0.164 MRR@5</text>
+
+        <path fill="none" d="M166 78 C178 78 178 108 190 108" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="194" y="98" width="100" height="20" rx="4" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="244" y="111" textAnchor="middle" fill="#a1a1aa">answer [1] [2]</text>
+        <path fill="none" d="M298 108 H312" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="316" y="92" width="60" height="32" rx="5" fill="rgba(52,211,153,.08)" stroke="#34d399" />
+        <text x="346" y="105" textAnchor="middle" fill="#a7f3d0">citations</text>
+        <text x="346" y="116" textAnchor="middle" fill="#a7f3d0">checked</text>
+        <path fill="none" d="M244 64 V94" stroke="#A855F7" strokeDasharray="3 3" markerEnd="url(#arA)" />
+
+        <text x="244" y="138" textAnchor="middle" fill="#52525b" fontSize="7">streamed over SSE from FastAPI</text>
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
+export function TsGuardDiagram() {
+  const rows: [string, string, number, string, string][] = [
+    ["random scores", "point adjust F1", 0.77, "#fbbf24", "0.77"],
+    ["random scores", "event-level AUC-PR", 0.044, "#71717a", "0.04"],
+    ["z-score model", "event-level AUC-PR", 0.7, "#A855F7", "0.70"],
+  ];
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="Bar chart on the 28 SMD machines: uniform random scores reach an F1 of 0.77 under point adjust but an event-level AUC-PR of 0.04, while the headline z-score model reaches an event-level AUC-PR of 0.70"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <text x="4" y="12" fill="#52525b" fontSize="7">SMD, mean of 28 machines</text>
+        {rows.map(([who, metric, value, color, label], i) => {
+          const y = 24 + i * 36;
+          return (
+            <g key={i}>
+              <text x="4" y={y + 9} fill="#a1a1aa">{who}</text>
+              <text x="4" y={y + 19} fill="#52525b" fontSize="7">{metric}</text>
+              <rect
+                x="112"
+                y={y + 2}
+                width={value * 220}
+                height="16"
+                rx="2"
+                fill={i === 0 ? "rgba(251,191,36,.10)" : "rgba(168,85,247,.16)"}
+                stroke={color}
+                strokeDasharray={i === 0 ? "3 3" : undefined}
+              />
+              <text x={116 + value * 220} y={y + 14} fill={color}>{label}</text>
+            </g>
+          );
+        })}
+        <text x="4" y="140" fill="#52525b" fontSize="7">thresholds and the headline model chosen without test labels</text>
+      </g>
+    </svg>
+  );
+}
+
 export const DIAGRAMS = {
   ehr: EhrDiagram,
   pipeci: PipeCiDiagram,
@@ -276,4 +423,7 @@ export const DIAGRAMS = {
   cairn: CairnDiagram,
   nano: NanoDiagram,
   jobqueue: JobQueueDiagram,
+  shale: ShaleDiagram,
+  arxiv: ArxivDiagram,
+  tsguard: TsGuardDiagram,
 } as const;

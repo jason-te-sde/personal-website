@@ -67,6 +67,56 @@ export const projects: Project[] = [
     visual: { kind: "diagram", id: "jobqueue" },
   },
   {
+    slug: "shale",
+    name: "shale",
+    status: "featured",
+    oneLiner: "A storage engine that keeps every write it confirmed.",
+    blurb:
+      "An embedded LSM-tree key-value store in C++20, in the shape of LevelDB and RocksDB, with no third-party runtime dependency. Every file operation goes through an injected filesystem that can lose power, so a crash at any byte is a seeded test that fails the same way tomorrow.",
+    bullets: [
+      "After **every** simulated step the database must match a reference model; after a crash it must hold a prefix of the acknowledged writes, never half a batch.",
+      "**200 real kill -9 rounds** per CI run. One on macOS left the MANIFEST ending in 438 zero bytes; v0.1.1 opens it.",
+      "Writes level with LevelDB at **0.98–0.99×** its ops/s; reads are slower (0.70× on random reads), measured and published.",
+    ],
+    headlineStat: "200× kill -9",
+    logos: ["cplusplus", "cmake", "linux"],
+    links: { github: "https://github.com/jason-te-sde/shale" },
+    visual: { kind: "diagram", id: "shale" },
+  },
+  {
+    slug: "arxiv-research-agent",
+    name: "arxiv-research-agent",
+    status: "featured",
+    oneLiner: "A research agent whose citations are checked.",
+    blurb:
+      "A ReAct agent that answers questions about arXiv papers, streamed over Server-Sent Events from FastAPI. Retrieval runs in two stages, embedding search and then a cross-encoder, over 65 papers pinned to exact versions, and every citation in an answer is checked against the passages the agent actually retrieved.",
+    bullets: [
+      "Reranking adds **0.164 MRR@5** on a 30-question test set, with a 95% interval of +0.039 to +0.297.",
+      "RAGAS context precision **0.91** and faithfulness 0.78 with local models only; every evaluation run is committed.",
+    ],
+    headlineStat: "+0.164 MRR@5",
+    logos: ["python", "fastapi", "ollama"],
+    links: { github: "https://github.com/jason-te-sde/arxiv-research-agent" },
+    visual: { kind: "diagram", id: "arxiv" },
+  },
+  {
+    slug: "timeseriesguard",
+    name: "TimeSeriesGuard",
+    status: "featured",
+    oneLiner: "Anomaly detection under a protocol random scores cannot beat.",
+    blurb:
+      "Four detectors, from a robust z-score to an LSTM autoencoder, on the 28 machines of the Server Machine Dataset. Most published results use point adjust, under which uniform random scores reach an F1 of 0.77; this project reports event-level AUC-PR, and picks every threshold, hyper-parameter and the headline model without a single test label.",
+    bullets: [
+      "**0.70 event-level AUC-PR** for the headline model (95% interval 0.62–0.78), where random scores get 0.04.",
+      "**Ten planted leakage defects**, each caught by the guard named for it; the guards are refusals in the code, not review notes.",
+      "A FastAPI service scores one row within 1e-6 of the batch score, at a **6.7 ms p95** in its container on a laptop.",
+    ],
+    headlineStat: "AUC-PR 0.70",
+    logos: ["python", "pytorch", "scikitlearn", "mlflow", "fastapi"],
+    links: { github: "https://github.com/jason-te-sde/timeseriesguard" },
+    visual: { kind: "diagram", id: "tsguard" },
+  },
+  {
     slug: "ehr-media-intelligence",
     name: "EHR Media Intelligence",
     status: "featured",
@@ -107,7 +157,7 @@ export const projects: Project[] = [
   {
     slug: "pipeci",
     name: "PipeCI",
-    status: "featured",
+    status: "secondary",
     oneLiner: "A CI/CD pipeline engine, built by five of us.",
     blurb:
       "A CI/CD pipeline engine with YAML validation, dry-run planning and topologically ordered job scheduling. Five of us built it; the diagram shows which half was mine.",
@@ -143,7 +193,7 @@ export const projects: Project[] = [
     blurb:
       "An open-source terminal coding agent for the Anthropic API, any OpenAI-compatible endpoint, or a local Ollama server — with a different model per role, so exploring a codebase does not have to cost what writing the fix does.",
     bullets: [
-      "Six roles — main, explore, plan, verify, compact, title — each pointed at **its own model**.",
+      "Six role slots — main, explore, plan, verify, compact, title — each can name **its own model**; main and compact use theirs today.",
       "Every file write is checked by a permission engine before it happens; not yet released.",
     ],
     badge: "In progress",
