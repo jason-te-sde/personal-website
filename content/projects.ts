@@ -193,8 +193,9 @@ export const projects: Project[] = [
     blurb:
       "An open-source terminal coding agent for the Anthropic API, any OpenAI-compatible endpoint, or a local Ollama server — with a different model per role, so exploring a codebase does not have to cost what writing the fix does.",
     bullets: [
-      "Six role slots — main, explore, plan, verify, compact, title — each can name **its own model**; main and compact use theirs today.",
-      "Every file write is checked by a permission engine before it happens; not yet released.",
+      "A read-only **explore sub-agent** runs on its own model, so searching a codebase can go to a cheaper one than writing the fix.",
+      "An **MCP client** that pins every tool's definition and asks again when one changes, checked by hand against the official reference servers.",
+      "Every file write passes a permission engine first; 4,955 tests; not yet released.",
     ],
     badge: "In progress",
     logos: ["python", "anthropic", "ollama"],
