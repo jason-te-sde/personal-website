@@ -100,7 +100,7 @@ export const article: Article = {
   },
   {
     kind: "p",
-    text: "The nightly soak started failing on main. I widened the sweep from 500 seeds to 10,000, and it turned up four ways a committed entry could end up on fewer than a majority of nodes: three in the consensus core and one in the simulator that drives it ([CHANGELOG.md](https://github.com/jason-te-sde/keel/blob/main/CHANGELOG.md)). Three came with seeds: 1695, 1537 and 2626, all above 500. The fourth, a leader counting its own not-yet-durable entries toward a quorum, turned up while I was chasing the others. Every tag before v0.3.1 can lose a committed entry."
+    text: "The nightly soak, which runs 2,000 seeds, started failing on main at seed 1695. Locally I widened the sweep from 500 seeds to 10,000, and it turned up four ways a committed entry could end up on fewer than a majority of nodes: three in the consensus core and one in the simulator that drives it ([CHANGELOG.md](https://github.com/jason-te-sde/keel/blob/main/CHANGELOG.md)). Three came with seeds: 1695, 1537 and 2626, all above 500. The fourth, a leader counting its own not-yet-durable entries toward a quorum, turned up while I was chasing the others. Every tag before v0.3.1 can lose a committed entry."
   },
   {
     kind: "p",
@@ -180,7 +180,7 @@ export const article: Article = {
   },
   {
     kind: "p",
-    text: "Now the 10,000-seed soak runs 12,000,000 invariant checks and 572,141 snapshots in 81 seconds with zero violations ([README.md](https://github.com/jason-te-sde/keel/blob/main/README.md))."
+    text: "After the fixes, 10,000 seeds ran 12,000,000 invariant checks and 572,141 snapshots in 81 seconds on my laptop with zero violations; the nightly job keeps running 2,000 ([README.md](https://github.com/jason-te-sde/keel/blob/main/README.md))."
   },
   {
     kind: "h2",
