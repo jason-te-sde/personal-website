@@ -6,7 +6,7 @@ import { LOGO_LABEL } from "@/content/stack";
  * every host allow-listed for no benefit at 13px.
  */
 /** Marks whose brand colour is black or near it (Helm's navy), which vanishes on this background; drawn in zinc-200 instead. */
-const DARK_MARKS = new Set(["nextdotjs", "anthropic", "ollama", "helm"]);
+const DARK_MARKS = new Set(["nextdotjs", "anthropic", "ollama", "helm", "socketdotio", "prisma", "apachearrow"]);
 
 export function LogoChip({ slug }: { slug: string }) {
   return (

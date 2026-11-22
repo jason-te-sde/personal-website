@@ -132,7 +132,13 @@ function FeaturedRow({ project, flip }: { project: Project; flip: boolean }) {
               <span
                 className={`shrink-0 whitespace-nowrap font-mono text-[11px] ${project.headlineStat === "team of 5" ? "text-zinc-500" : "text-accent"}`}
               >
-                {project.headlineStat}
+                {project.headlineSource ? (
+                  <ExternalLink href={project.headlineSource} className="underline decoration-accent/40 underline-offset-4 hover:decoration-accent">
+                    {project.headlineStat}
+                  </ExternalLink>
+                ) : (
+                  project.headlineStat
+                )}
               </span>
             )}
           </div>
