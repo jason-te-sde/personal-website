@@ -84,6 +84,25 @@ export const projects: Project[] = [
     visual: { kind: "diagram", id: "shale" },
   },
   {
+    slug: "quarry",
+    name: "quarry",
+    status: "featured",
+    oneLiner: "A query engine checked against DuckDB, and honest that it is slower.",
+    blurb:
+      "A vectorized SQL query engine in C++20 over Apache Arrow and Parquet. It plans a SELECT with a small rule-based and cost-based optimizer and runs it on Arrow column batches with its own kernels, hash joins and hash aggregation. Single-threaded and read-only, with joins and aggregations that spill to disk under a memory limit.",
+    bullets: [
+      "Every result is compared with **DuckDB's**: the four TPC-H-derived queries cell by cell, and a seeded generator of random tables and queries run on both engines on every push and nightly.",
+      "**Slower than DuckDB on every query**: single-threaded, 3.57× to 6.29× its time at scale factor 1. The README says so first and explains where the time goes.",
+      "A fix to the join-size estimate took Q5 from **4,730 ms to 590.5 ms**; its join order is still not the best one, and the README says that too.",
+    ],
+    headlineStat: "Q5 4,730 → 590.5 ms",
+    headlineSource: "https://github.com/jason-te-sde/quarry/blob/v0.1.0/README.md#L279",
+    meta: "v0.1.0 · MIT",
+    logos: ["cplusplus", "apachearrow", "apacheparquet", "duckdb", "cmake"],
+    links: { github: "https://github.com/jason-te-sde/quarry" },
+    visual: { kind: "diagram", id: "quarry" },
+  },
+  {
     slug: "arxiv-research-agent",
     name: "arxiv-research-agent",
     status: "featured",
@@ -115,6 +134,25 @@ export const projects: Project[] = [
     logos: ["python", "pytorch", "scikitlearn", "mlflow", "fastapi"],
     links: { github: "https://github.com/jason-te-sde/timeseriesguard" },
     visual: { kind: "diagram", id: "tsguard" },
+  },
+  {
+    slug: "collabdocs",
+    name: "CollabDocs",
+    status: "featured",
+    oneLiner: "A collaborative editor that checks the role on every event.",
+    blurb:
+      "A real-time collaborative document editor: Yjs CRDT sync and awareness over Socket.IO, TipTap bound to the document, live cursors and presence. A role on every document is checked on every REST route and every socket event. Updates are logged in PostgreSQL and compacted into snapshots, and several collab instances relay through Redis.",
+    bullets: [
+      "Sync latency **p95 6.7 ms** at 50 editors on one document, one in five typing, in the worst of three runs, on one Apple M2 over loopback against a single server instance. The goal was under 100 ms.",
+      "With every one of **100 editors** typing, the median p95 was 8.5 ms. Browser rendering, real networks and several server instances were not measured.",
+      "A property test checks that random concurrent edits, delivered late, out of order and across a disconnect, always converge; edits made offline are kept in IndexedDB and merged on reconnect.",
+    ],
+    headlineStat: "p95 6.7 ms, loopback",
+    headlineSource: "https://github.com/jason-te-sde/collabdocs/blob/v0.1.0/README.md#L147",
+    meta: "v0.1.0",
+    logos: ["nextdotjs", "socketdotio", "postgresql", "prisma", "redis", "typescript"],
+    links: { github: "https://github.com/jason-te-sde/collabdocs" },
+    visual: { kind: "diagram", id: "collabdocs" },
   },
   {
     slug: "ehr-media-intelligence",

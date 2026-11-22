@@ -1,6 +1,6 @@
 /**
- * Authored architecture diagrams. keel, EHR, PipeCI, cairn, nano-claude-code, the job queue, shale, the arXiv agent and
- * TimeSeriesGuard have no GUI to screenshot,
+ * Authored architecture diagrams. keel, EHR, PipeCI, cairn, nano-claude-code, the job queue, shale, quarry, the arXiv agent,
+ * TimeSeriesGuard and CollabDocs have no GUI to screenshot,
  * so these draw the real shape of each system instead of faking app shots.
  * Note every <path> sets fill="none" — the parent <g> carries a fill, and an
  * L-shaped path without it renders as a filled triangle.
@@ -416,6 +416,105 @@ export function TsGuardDiagram() {
   );
 }
 
+export function QuarryDiagram() {
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="SQL text is parsed and bound, then rewritten by optimizer rules into a physical plan. Pull-based operators run the plan over Arrow batches read from Parquet files, and joins and aggregations spill to disk under a memory limit. DuckDB runs the same SQL on the same files as the reference, and every result is compared"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <rect x="4" y="8" width="44" height="36" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="26" y="29" textAnchor="middle" fill="#a1a1aa">SQL</text>
+        <path fill="none" d="M52 26 h8" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="64" y="8" width="72" height="36" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="100" y="24" textAnchor="middle" fill="#a1a1aa">parse</text>
+        <text x="100" y="35" textAnchor="middle" fill="#a1a1aa">+ bind</text>
+        <path fill="none" d="M140 26 h8" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="152" y="8" width="88" height="36" rx="5" fill="rgba(168,85,247,.10)" stroke="#8E2DE2" />
+        <text x="196" y="24" textAnchor="middle" fill="#e4e4e7">optimizer</text>
+        <text x="196" y="35" textAnchor="middle" fill="#71717a" fontSize="7">rules + costs</text>
+        <path fill="none" d="M244 26 h8" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="256" y="8" width="120" height="48" rx="5" fill="rgba(168,85,247,.16)" stroke="#A855F7" />
+        <text x="316" y="24" textAnchor="middle" fill="#e4e4e7" fontWeight="700">operators</text>
+        <text x="316" y="36" textAnchor="middle" fill="#A855F7" fontSize="7">pulled by their parent</text>
+        <text x="316" y="47" textAnchor="middle" fill="#71717a" fontSize="7">over Arrow batches</text>
+
+        <path fill="none" d="M270 60 V72" stroke="#52525b" strokeDasharray="3 3" markerEnd="url(#ar)" />
+        <rect x="186" y="76" width="90" height="26" rx="4" fill="rgba(251,191,36,.08)" stroke="#fbbf24" strokeDasharray="3 3" />
+        <text x="231" y="87" textAnchor="middle" fill="#fcd34d">spill to disk</text>
+        <text x="231" y="97" textAnchor="middle" fill="#71717a" fontSize="7">under a memory limit</text>
+
+        <path fill="none" d="M340 76 V60" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="292" y="76" width="84" height="26" rx="4" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="334" y="93" textAnchor="middle" fill="#a1a1aa">Parquet files</text>
+
+        <text x="90" y="92" textAnchor="middle" fill="#52525b" fontSize="7">one thread · read-only</text>
+
+        <rect x="4" y="110" width="372" height="34" rx="5" fill="rgba(52,211,153,.08)" stroke="#34d399" strokeDasharray="3 3" />
+        <text x="190" y="124" textAnchor="middle" fill="#a7f3d0">reference: DuckDB runs the same SQL on the same files</text>
+        <text x="190" y="136" textAnchor="middle" fill="#71717a" fontSize="7">results compared on every test query; quarry is slower on all four</text>
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
+export function CollabDocsDiagram() {
+  const clients: [string, string, number][] = [
+    ["TipTap + Y.Doc", "IndexedDB copy", 10],
+    ["editor", "live cursors", 44],
+    ["viewer", "read-only", 78],
+  ];
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="Browser editors and read-only viewers hold a Yjs document and sync with a Socket.IO collab server, which checks the token and the role on every event and keeps a Y.Doc per open document. The server appends each update to a PostgreSQL update log that is compacted into snapshots, and a Redis relay carries updates between collab instances"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        {clients.map(([title, sub, y]) => (
+          <g key={title}>
+            <rect x="4" y={y} width="78" height="28" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+            <text x="43" y={y + 12} textAnchor="middle" fill="#a1a1aa">{title}</text>
+            <text x="43" y={y + 22} textAnchor="middle" fill="#52525b" fontSize="6.5">{sub}</text>
+            <path fill="none" d={`M86 ${y + 11} H112`} stroke="#52525b" markerEnd="url(#ar)" />
+            <path fill="none" d={`M112 ${y + 18} H86`} stroke="#52525b" markerEnd="url(#ar)" />
+          </g>
+        ))}
+        <text x="99" y="130" textAnchor="middle" fill="#52525b" fontSize="6.5">WebSocket</text>
+
+        <rect x="116" y="10" width="116" height="62" rx="5" fill="rgba(168,85,247,.16)" stroke="#A855F7" />
+        <text x="174" y="25" textAnchor="middle" fill="#e4e4e7" fontWeight="700">Socket.IO server</text>
+        <text x="174" y="39" textAnchor="middle" fill="#A855F7" fontSize="7">token + role checked</text>
+        <text x="174" y="49" textAnchor="middle" fill="#A855F7" fontSize="7">on every event</text>
+        <text x="174" y="63" textAnchor="middle" fill="#71717a" fontSize="7">Y.Doc per open document</text>
+
+        <path fill="none" d="M236 30 H264" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="268" y="10" width="108" height="40" rx="5" fill="rgba(168,85,247,.10)" stroke="#8E2DE2" />
+        <text x="322" y="26" textAnchor="middle" fill="#e4e4e7" fontWeight="700">PostgreSQL</text>
+        <text x="322" y="38" textAnchor="middle" fill="#71717a" fontSize="7">update log → snapshots</text>
+
+        <rect x="116" y="96" width="116" height="24" rx="5" fill="rgba(255,255,255,.03)" stroke="#3f3f46" strokeDasharray="3 3" />
+        <text x="174" y="111" textAnchor="middle" fill="#71717a">another instance</text>
+        <path fill="none" d="M236 68 L264 84" stroke="#52525b" markerEnd="url(#ar)" />
+        <path fill="none" d="M236 108 L264 96" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="268" y="74" width="108" height="32" rx="5" fill="rgba(251,191,36,.08)" stroke="#fbbf24" />
+        <text x="322" y="88" textAnchor="middle" fill="#fcd34d">Redis</text>
+        <text x="322" y="99" textAnchor="middle" fill="#71717a" fontSize="7">relay between instances</text>
+
+        <text x="248" y="136" textAnchor="middle" fill="#52525b" fontSize="7">load-tested on loopback, one instance</text>
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
 export const DIAGRAMS = {
   ehr: EhrDiagram,
   pipeci: PipeCiDiagram,
@@ -426,4 +525,6 @@ export const DIAGRAMS = {
   shale: ShaleDiagram,
   arxiv: ArxivDiagram,
   tsguard: TsGuardDiagram,
+  quarry: QuarryDiagram,
+  collabdocs: CollabDocsDiagram,
 } as const;

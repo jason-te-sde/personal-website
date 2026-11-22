@@ -36,7 +36,7 @@ export type Visual =
   | { kind: "terminal" }
   | {
       kind: "diagram";
-      id: "ehr" | "pipeci" | "medtriage" | "cairn" | "nano" | "jobqueue" | "shale" | "arxiv" | "tsguard";
+      id: "ehr" | "pipeci" | "medtriage" | "cairn" | "nano" | "jobqueue" | "shale" | "arxiv" | "tsguard" | "quarry" | "collabdocs";
     };
 
 export interface Project {
@@ -50,6 +50,8 @@ export interface Project {
   ownership?: string;
   meta?: string;
   headlineStat?: string;
+  /** The file in the project's repository that states `headlineStat`; the headline links to it. */
+  headlineSource?: string;
   badge?: string;
   logos: string[];
   links: { github?: string; live?: string; docs?: string; caseStudy?: string };
