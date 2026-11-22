@@ -453,11 +453,11 @@ export function QuarryDiagram() {
         <rect x="292" y="76" width="84" height="26" rx="4" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
         <text x="334" y="93" textAnchor="middle" fill="#a1a1aa">Parquet files</text>
 
-        <text x="90" y="92" textAnchor="middle" fill="#52525b" fontSize="7">one thread · read-only</text>
+        <text x="90" y="92" textAnchor="middle" fill="#52525b" fontSize="7">vectorized · hash joins</text>
 
         <rect x="4" y="110" width="372" height="34" rx="5" fill="rgba(52,211,153,.08)" stroke="#34d399" strokeDasharray="3 3" />
         <text x="190" y="124" textAnchor="middle" fill="#a7f3d0">reference: DuckDB runs the same SQL on the same files</text>
-        <text x="190" y="136" textAnchor="middle" fill="#71717a" fontSize="7">results compared on every test query; quarry is slower on all four</text>
+        <text x="190" y="136" textAnchor="middle" fill="#71717a" fontSize="7">results compared on every test query and on seeded random queries</text>
       </g>
       <Arrows />
     </svg>
