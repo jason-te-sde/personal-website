@@ -126,7 +126,7 @@ export const projects: Project[] = [
     blurb:
       "Tailors a one-page resume to a job description from a bank of facts. A model chooses the entries and rewrites each bullet from the facts it cites; a fact-consistency verifier checks every rewrite for numbers, technologies and claims its facts do not hold. A bullet that fails is rewritten once, then replaced by the bank's own sentence, and the result is a one-page LaTeX PDF.",
     bullets: [
-      "By blind labels of a sample of each, **about 32%** of the model's first rewrites carried a violation (95% interval 21.3% to 44.2%), and **about 9%** of the rewritten bullets that passed the gate do (5.4% to 17.3%). qwen3:8b, 12 postings, 3 seeds, 36 runs.",
+      "By labels from the facts on a sample of each, **about 32%** of the model's first rewrites carried a violation (95% interval 21.3% to 44.2%), and **about 9%** of the rewritten bullets that passed the gate do (5.4% to 17.3%). qwen3:8b, 12 postings, 3 seeds, 36 runs.",
       "The verifier catches **52 of 57** violations on its holdout (0.91), with 0 of 27 clean rows flagged.",
       "CI replays a recorded run with no model, and recomputes every scored result from its committed inputs.",
     ],
