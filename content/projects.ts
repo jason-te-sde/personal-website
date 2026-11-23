@@ -119,6 +119,25 @@ export const projects: Project[] = [
     visual: { kind: "diagram", id: "arxiv" },
   },
   {
+    slug: "jd-resume-tailor",
+    name: "jd-resume-tailor",
+    status: "featured",
+    oneLiner: "A resume tailor whose rewrites are checked against the facts.",
+    blurb:
+      "Tailors a one-page resume to a job description from a bank of facts. A model chooses the entries and rewrites each bullet from the facts it cites; a fact-consistency verifier checks every rewrite for numbers, technologies and claims its facts do not hold. A bullet that fails is rewritten once, then replaced by the bank's own sentence, and the result is a one-page LaTeX PDF.",
+    bullets: [
+      "By labels from the facts on a sample of each, **about 32%** of the model's first rewrites carried a violation (95% interval 21.3% to 44.2%), and **about 9%** of the rewritten bullets that passed the gate do (5.4% to 17.3%). qwen3:8b, 12 postings, 3 seeds, 36 runs.",
+      "The verifier catches **52 of 57** violations on its holdout (0.91), with 0 of 27 clean rows flagged.",
+      "CI replays a recorded run with no model, and recomputes every scored result from its committed inputs.",
+    ],
+    headlineStat: "violations ~32% → ~9%",
+    headlineSource: "https://github.com/jason-te-sde/jd-resume-tailor/blob/v0.1.0/README.md#L30-L33",
+    meta: "v0.1.0 · MIT",
+    logos: ["python", "ollama", "latex"],
+    links: { github: "https://github.com/jason-te-sde/jd-resume-tailor" },
+    visual: { kind: "diagram", id: "tailor" },
+  },
+  {
     slug: "timeseriesguard",
     name: "TimeSeriesGuard",
     status: "featured",
