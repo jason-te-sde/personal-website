@@ -76,7 +76,7 @@ export const projects: Project[] = [
     bullets: [
       "After **every** simulated step the database must match a reference model; after a crash it must hold a prefix of the acknowledged writes, never half a batch.",
       "**200 real kill -9 rounds** per CI run. One on macOS left the MANIFEST ending in 438 zero bytes; v0.1.1 opens it.",
-      "Writes level with LevelDB at **0.98–0.99×** its ops/s, benchmarked side by side on the same machine.",
+      "v0.1.2 rebuilt the read path: sequential scans **1.97×** and seeks **1.24×** as fast as v0.1.1, in interleaved rounds beside LevelDB.",
     ],
     headlineStat: "200× kill -9",
     logos: ["cplusplus", "cmake", "linux"],
