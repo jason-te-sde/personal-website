@@ -1,6 +1,6 @@
 /**
  * Authored architecture diagrams. keel, EHR, PipeCI, cairn, nano-claude-code, the job queue, shale, quarry, the arXiv agent,
- * TimeSeriesGuard and CollabDocs have no GUI to screenshot,
+ * TimeSeriesGuard, CollabDocs and jd-resume-tailor have no GUI to screenshot,
  * so these draw the real shape of each system instead of faking app shots.
  * Note every <path> sets fill="none" — the parent <g> carries a fill, and an
  * L-shaped path without it renders as a filled triangle.
@@ -515,6 +515,63 @@ export function CollabDocsDiagram() {
   );
 }
 
+export function TailorDiagram() {
+  return (
+    <svg
+      viewBox="0 0 380 150"
+      className="w-full"
+      role="img"
+      aria-label="A job description goes to entry selection, then to a rewrite of each bullet from the facts it cites in the fact bank. The verifier gate checks every rewrite against those facts: a bullet that passes goes to the one-page PDF, and one that fails is rewritten once and checked again. If it fails again, the bank's own sentence is used instead"
+    >
+      <g fontFamily="'JetBrains Mono',monospace" fontSize="8">
+        <rect x="4" y="8" width="44" height="36" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="26" y="29" textAnchor="middle" fill="#a1a1aa">JD</text>
+        <path fill="none" d="M52 26 h8" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="64" y="8" width="72" height="36" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="100" y="24" textAnchor="middle" fill="#a1a1aa">select</text>
+        <text x="100" y="35" textAnchor="middle" fill="#a1a1aa">entries</text>
+        <path fill="none" d="M140 26 h8" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="152" y="8" width="72" height="36" rx="5" fill="rgba(255,255,255,.04)" stroke="#3f3f46" />
+        <text x="188" y="24" textAnchor="middle" fill="#a1a1aa">rewrite</text>
+        <text x="188" y="35" textAnchor="middle" fill="#71717a" fontSize="7">cites fact ids</text>
+        <path fill="none" d="M228 26 h8" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="240" y="8" width="136" height="36" rx="5" fill="rgba(168,85,247,.16)" stroke="#A855F7" />
+        <text x="308" y="24" textAnchor="middle" fill="#e4e4e7" fontWeight="700">verifier gate</text>
+        <text x="308" y="35" textAnchor="middle" fill="#A855F7" fontSize="7">bullet vs. the facts it cites</text>
+
+        <rect x="4" y="62" width="100" height="26" rx="4" fill="rgba(251,191,36,.08)" stroke="#fbbf24" />
+        <text x="54" y="73" textAnchor="middle" fill="#fcd34d">fact bank</text>
+        <text x="54" y="83" textAnchor="middle" fill="#71717a" fontSize="7">every bullet cites it</text>
+        <path fill="none" d="M80 62 V48" stroke="#52525b" strokeDasharray="3 3" markerEnd="url(#ar)" />
+
+        <path fill="none" d="M285 44 V58" stroke="#52525b" markerEnd="url(#ar)" />
+        <text x="290" y="55" fill="#71717a" fontSize="6.5">fails</text>
+        <rect x="240" y="62" width="90" height="26" rx="4" fill="rgba(168,85,247,.10)" stroke="#8E2DE2" />
+        <text x="285" y="73" textAnchor="middle" fill="#e4e4e7">retry once</text>
+        <text x="285" y="83" textAnchor="middle" fill="#71717a" fontSize="7">gate checks it again</text>
+
+        <path fill="none" d="M238 75 H224" stroke="#52525b" markerEnd="url(#ar)" />
+        <rect x="120" y="62" width="100" height="26" rx="4" fill="rgba(251,191,36,.08)" stroke="#fbbf24" strokeDasharray="3 3" />
+        <text x="170" y="73" textAnchor="middle" fill="#fcd34d">bank&apos;s own sentence</text>
+        <text x="170" y="83" textAnchor="middle" fill="#71717a" fontSize="7">if the retry fails too</text>
+
+        <path fill="none" d="M362 44 V104" stroke="#52525b" markerEnd="url(#ar)" />
+        <text x="359" y="78" textAnchor="end" fill="#71717a" fontSize="6.5">passes</text>
+        <path fill="none" d="M285 88 V104" stroke="#52525b" markerEnd="url(#ar)" />
+        <path fill="none" d="M170 88 V104" stroke="#52525b" markerEnd="url(#ar)" />
+
+        <rect x="4" y="108" width="372" height="34" rx="5" fill="rgba(52,211,153,.08)" stroke="#34d399" />
+        <text x="190" y="122" textAnchor="middle" fill="#a7f3d0">one-page PDF</text>
+        <text x="190" y="134" textAnchor="middle" fill="#71717a" fontSize="7">every bullet passed the verifier or is the bank&apos;s own sentence</text>
+      </g>
+      <Arrows />
+    </svg>
+  );
+}
+
 export const DIAGRAMS = {
   ehr: EhrDiagram,
   pipeci: PipeCiDiagram,
@@ -527,4 +584,5 @@ export const DIAGRAMS = {
   tsguard: TsGuardDiagram,
   quarry: QuarryDiagram,
   collabdocs: CollabDocsDiagram,
+  tailor: TailorDiagram,
 } as const;

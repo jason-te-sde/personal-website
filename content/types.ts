@@ -36,7 +36,7 @@ export type Visual =
   | { kind: "terminal" }
   | {
       kind: "diagram";
-      id: "ehr" | "pipeci" | "medtriage" | "cairn" | "nano" | "jobqueue" | "shale" | "arxiv" | "tsguard" | "quarry" | "collabdocs";
+      id: "ehr" | "pipeci" | "medtriage" | "cairn" | "nano" | "jobqueue" | "shale" | "arxiv" | "tsguard" | "quarry" | "collabdocs" | "tailor";
     };
 
 export interface Project {

@@ -31,5 +31,5 @@ export const LOGO_LABEL: Record<string, string> = {
   terraform: "Terraform", anthropic: "Anthropic", ollama: "Ollama",
   cplusplus: "C++", cmake: "CMake", scikitlearn: "scikit-learn", mlflow: "MLflow",
   apachearrow: "Arrow", apacheparquet: "Parquet", duckdb: "DuckDB",
-  socketdotio: "Socket.IO", prisma: "Prisma",
+  socketdotio: "Socket.IO", prisma: "Prisma", latex: "LaTeX",
 };
